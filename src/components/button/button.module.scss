@@ -1,0 +1,140 @@
+@use '@styles/helpers/mixins' as m;
+
+/**
+ * Common Variables
+ */
+$btn-bg-disabled: var(--gray-100);
+$btn-fg-disabled: var(--gray-400);
+
+/**
+ * Primary Variables
+ */
+$btn-primary-bg: var(--brand-600) ;
+$btn-primary-bg_hover: var(--brand-700);
+$btn-primary-fg: var(--white);
+
+/**
+ * Secondary-neutral Variables
+ */
+$btn-secondary-neutral-bg: var(--white);
+$btn-secondary-neutral-bg_hover: var(--gray-50);
+$btn-secondary-neutral-border: var(--gray-300);
+$btn-secondary-neutral-fg: var(--gray-700);
+$btn-secondary-neutral-fg_hover: var(--gray-800);
+
+/**
+ * Secondary-color Variables
+ */
+$btn-secondary-color-bg: var(--white) ;
+$btn-secondary-color-bg_hover: var(--brand-50);
+$btn-secondary-color-border: var(--brand-300);
+$btn-secondary-color-fg: var(--brand-700);
+$btn-secondary-color-fg_hover: var(--brand-800);
+
+/**
+ * Tertiary-neutral Variables
+ */
+$btn-tertiary-neutral-bg: transparent ;
+$btn-tertiary-neutral-bg_hover: var(--gray-50);
+$btn-tertiary-neutral-fg: var(--gray-600);
+$btn-tertiary-neutral-fg_hover: var(--gray-700);
+
+/**
+ * Tertiary-color Variables
+ */
+$btn-tertiary-color-bg: transparent;
+$btn-tertiary-color-bg_hover: var(--brand-50);
+$btn-tertiary-color-fg: var(--brand-700);
+$btn-tertiary-color-fg_hover: var(--brand-800);
+
+/**
+ * Mixins
+ */
+@mixin btn-variant($bg, $bg-alt, $fg, $fg-alt) {
+  background: $bg;
+  color: $fg;
+
+  &:active,
+  &:hover {
+    background: $bg-alt;
+    color: $fg-alt;
+  }
+}
+
+.btn {
+  @include m.flex-inline();
+  @include m.center();
+  gap: var(--spacing-xs);
+  font-weight: 500;
+  font-family: inherit;
+  white-space: nowrap;
+  border: none;
+  border-radius: var(--radius-sm);
+
+  appearance: none;
+  transition: background, color var(--timing-01) ease-in-out;
+
+  &:disabled, &:disabled:hover, &:disabled:active {
+    background: $btn-bg-disabled !important;
+    color: $btn-fg-disabled !important;
+    cursor: default;
+  }
+
+  &:hover,&:active {
+    transition: background var(--timing-01) ease-in-out, color var(--timing-01) ease-in-out;
+    cursor: pointer;
+  }
+}
+
+.btn[data-variant="primary"] {
+  @include btn-variant(
+          $btn-primary-bg,
+          $btn-primary-bg_hover,
+          $btn-primary-fg,
+          $btn-primary-fg)
+}
+
+.btn[data-variant="secondary-neutral"] {
+  @include btn-variant(
+          $btn-secondary-neutral-bg,
+          $btn-secondary-neutral-bg_hover,
+          $btn-secondary-neutral-fg,
+          $btn-secondary-neutral-fg_hover)
+}
+
+.btn[data-variant="secondary-color"] {
+  @include btn-variant(
+          $btn-secondary-color-bg,
+          $btn-secondary-color-bg_hover,
+          $btn-secondary-color-fg,
+          $btn-secondary-color-fg_hover)
+}
+
+.btn[data-variant="tertiary-neutral"] {
+  @include btn-variant(
+          $btn-tertiary-neutral-bg,
+          $btn-tertiary-neutral-bg_hover,
+          $btn-tertiary-neutral-fg,
+          $btn-tertiary-neutral-fg_hover)
+}
+
+.btn[data-variant="tertiary-color"] {
+  @include btn-variant(
+          $btn-tertiary-color-bg,
+          $btn-tertiary-color-bg_hover,
+          $btn-tertiary-color-fg,
+          $btn-tertiary-color-fg_hover)
+}
+
+
+.btn[data-size='sm'] {
+  padding: var(--spacing-sm) var(--spacing-lg);
+}
+
+.btn[data-size='md'] {
+  padding: var(--spacing-md) var(--spacing-lg);
+}
+
+.btn[data-size='lg'] {
+  padding: var(--spacing-lg) var(--spacing-xl);
+}

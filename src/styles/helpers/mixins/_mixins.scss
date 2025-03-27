@@ -1,0 +1,49 @@
+@mixin flex {
+  display: flex;
+}
+
+@mixin flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-inline {
+  display: inline-flex;
+}
+
+@mixin justify-center {
+  justify-content: center;
+}
+
+@mixin items-center {
+  align-items: center;
+}
+
+@mixin center {
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin radius($size) {
+  border-radius: $size;
+}
+
+@mixin px($size) {
+  padding-left: $size;
+  padding-right: $size;
+}
+
+@mixin py($size) {
+  padding-bottom: $size;
+  padding-top: $size;
+}
+
+@mixin mx($size) {
+  margin-left: $size;
+  margin-right: $size;
+}
+
+@mixin my($size) {
+  margin-bottom: $size;
+  margin-top: $size;
+}
